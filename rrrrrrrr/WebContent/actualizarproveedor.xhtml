@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<title>Actualizar proveedor</title>
+	
+	
+	
+</h:head>
+
+<h:body>
+
+	
+	<div id="container">
+		<h3>Actualizar proveedor</h3>
+
+		<h:messages globalOnly="true" />
+
+		<h:form id="form" style="margin-top: 10px;" >
+			<h:panelGrid columns="3">
+			
+				<h:outputLabel>Nombre del proveedor:</h:outputLabel> <h:inputText value="#{proveedorBean.nombredelproveedor}" id="nombredelproveedor" /> <h:message for="nombredelproveedor" />
+	
+				<h:outputLabel>direccion:</h:outputLabel> <h:inputText value="#{proveedorBean.direccion}" id="direccion" /> <h:message for="direccion" />
+	
+				<h:outputLabel>Email:</h:outputLabel> <h:inputText value="#{proveedorBean.correoelectronico}" id="correoelectronico" 
+									required="true"
+            							requiredMessage="Your email is mandatory."/> 	<h:message for="correoelectronico"  />
+				
+				 
+				 <h:outputLabel>Cantidad de vehiculos:</h:outputLabel> <h:inputText value="#{proveedorBean.cantidadvehiculos}" id="cantidadvehiculos" /> <h:message for="cantidadvehiculos" />
+				
+				 <h:commandButton value="Actualizar" styleClass="save" 
+				 			action="#{proveedorController.updateProveedor(proveedorBean)}"/>
+				 
+				 <h:inputHidden value="#{proveedorBean.numerodeidentificacion}" />
+			
+			</h:panelGrid>
+		</h:form>
+
+		<div style="clear: both;"></div>
+
+		<p><h:outputLink value="listaProveedores.xhtml">Volver a la lista</h:outputLink></p>
+
+	</div>	
+</h:body>
+</html>

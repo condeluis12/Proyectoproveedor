@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<f:metadata>
+  <f:event type="preRenderView" listener="#{vehiculoController.loadVehiculos()}"/>
+</f:metadata>
+
+<h:head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<title>Vehiculos</title>
+	
+</h:head>
+
+<h:body>
+
+	<div id="wrapper">
+		<div id="header">
+			<h2>Lista de vehiculos</h2>
+		</div>
+	</div>
+
+	<div id="container">
+
+		<div id="content">
+		
+			<h:messages globalOnly="true" />
+		
+			<h:button value="Agregar vehiculo" styleClass="add-student-button" outcome="agregarvehiculo"/>			
+
+			<h:form>
+			<h:outputLabel>Buscar por placa del carro:</h:outputLabel> <h:inputText value="#{busqueda.palabra}" id="palabra" /> <h:message for="palabra" />
+			<h:outputLabel /> <h:commandButton value="Buscar" styleClass="save" action="#{vehiculoController.buscarVehiculo(busqueda.palabra)}"/>
+						
+			<h:dataTable value="#{vehiculoController.vehiculoBeans}" var="tempVehiculo"
+				styleClass="demo-table" 
+				headerClass="demo-table-header"
+				rowClasses="demo-table-odd-row,demo-table-even-row">
+
+				<h:column>
+					<!-- the column header -->
+					<f:facet name="header">id</f:facet>
+
+					<!--  the value for each row -->
+					#{tempVehiculo.numeroidentificacionelconductor}				</h:column>
+
+				<h:column>
+					<!-- the column header -->
+					<f:facet name="header">Nombre del conductor</f:facet>
+
+					<!--  the value for each row -->
+					#{tempVehiculo.nombredelconductor}
+				</h:column>
+
+				<h:column>
+					<!-- the column header -->
+					<f:facet name="header">Marca</f:facet>
+
+					<!--  the value for each row -->
+					#{tempVehiculo.marca}
+				</h:column>
+				
+				<h:column>
+					<!-- the column header -->
+					<f:facet name="header">Modelo</f:facet>
+
+					<!--  the value for each row -->
+					#{tempVehiculo.modelo}
+				</h:column>
+				
+				<h:column>
+					<!-- the column header -->
+					<f:facet name="header">Placa del vehiculo</f:facet>
+
+					<!--  the value for each row -->
+					#{tempVehiculo.placadelvehiculo}
+				</h:column>
+
+				<h:column>
+					<!-- the column header -->
+					<f:facet name="header">Id proveedor</f:facet>
+
+					<!--  the value for each row -->
+					#{tempVehiculo.idProveedor}
+				</h:column>
+				
+				<h:column>
+					<!-- the column header -->
+					<f:facet name="header">Estado</f:facet>
+
+					<!--  the value for each row -->
+					#{tempVehiculo.estado}
+				</h:column>
+				
+				<h:column>
+					<!-- the column header -->
+					<f:facet name="header">Acción</f:facet>
+
+					<!--  the value for each row -->
+					<h:commandLink value="Actualizar"
+						action="#{vehiculoController.loadVehiculo(tempVehiculo.numeroidentificacionelconductor)}"/>
+					|
+
+					<h:commandLink value="Eliminar"
+						onclick="if (!confirm('Quiere eliminar este proveedor?')) return false"
+						action="#{vehiculoController.deleteVehiculo(tempVehiculo.numeroidentificacionelconductor)}"/>
+				</h:column>
+
+			</h:dataTable>
+
+			</h:form>
+
+		</div>
+		
+	</div>
+
+</h:body>
+</html>
