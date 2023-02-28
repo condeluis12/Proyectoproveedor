@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
 <f:metadata>
   <f:event type="preRenderView" listener="#{proveedorController.loadProveedores()}"/>
@@ -16,12 +17,8 @@
 </h:head>
 
 <h:body>
-
-	<div id="wrapper">
-		<div id="header">
-			<h2>LIsta de proveedores</h2>
-		</div>
-	</div>
+<p:panel header="LIsta de proveedores">
+	
 
 	<div id="container">
 
@@ -29,58 +26,60 @@
 		
 			<h:messages globalOnly="true" />
 		
-			<h:button value="Agregar proveedor" styleClass="add-student-button" outcome="agregarproveedor"/>			
+			<p:button value="Agregar proveedor" styleClass="add-student-button" outcome="agregarproveedor"/>			
 
 			<h:form>
 		<h:outputLabel>Buscar por Nombre del proveedor:</h:outputLabel> <h:inputText value="#{busqueda.palabra}" id="palabra" /> <h:message for="palabra" />
-			<h:outputLabel /> <h:commandButton value="Buscar" styleClass="save" action="#{proveedorController.buscarProveedor(busqueda.palabra)}"/>
+		
+			<h:outputLabel /> <p:commandButton value="Buscar" styleClass="save" action="#{proveedorController.buscarProveedor(busqueda.palabra)}"/>
 			
 						
-			<h:dataTable value="#{proveedorController.proveedorBeans}" var="tempProveedor"
+			<p:dataTable value="#{proveedorController.proveedorBeans}" var="tempProveedor"
 				styleClass="demo-table" 
 				headerClass="demo-table-header"
 				rowClasses="demo-table-odd-row,demo-table-even-row">
 
-				<h:column>
+				<p:column>
 					<!-- the column header -->
 					<f:facet name="header">id</f:facet>
 
 					<!--  the value for each row -->
-					#{tempProveedor.numerodeidentificacion}				</h:column>
+					#{tempProveedor.numerodeidentificacion}				
+				</p:column>
 
-				<h:column>
+				<p:column>
 					<!-- the column header -->
 					<f:facet name="header">Nombre del proveedor</f:facet>
 
 					<!--  the value for each row -->
 					#{tempProveedor.nombredelproveedor}
-				</h:column>
+				</p:column>
 
-				<h:column>
+				<p:column>
 					<!-- the column header -->
 					<f:facet name="header">Email</f:facet>
 
 					<!--  the value for each row -->
 					#{tempProveedor.correoelectronico}
-				</h:column>
+				</p:column>
 				
-				<h:column>
+				<p:column>
 					<!-- the column header -->
 					<f:facet name="header">dirección</f:facet>
 
 					<!--  the value for each row -->
 					#{tempProveedor.direccion}
-				</h:column>
+				</p:column>
 				
-				<h:column>
+				<p:column>
 					<!-- the column header -->
 					<f:facet name="header">Cantidad de vehiculos</f:facet>
 
 					<!--  the value for each row -->
 					#{tempProveedor.cantidadvehiculos}
-				</h:column>
+				</p:column>
 
-				<h:column>
+				<p:column>
 					<!-- the column header -->
 					<f:facet name="header">Acción</f:facet>
 
@@ -92,15 +91,15 @@
 					<h:commandLink value="Eliminar"
 						onclick="if (!confirm('Quiere eliminar este proveedor?')) return false"
 						action="#{proveedorController.deleteProveedor(tempProveedor.numerodeidentificacion)}"/>
-				</h:column>
+				</p:column>
 
-			</h:dataTable>
+			</p:dataTable>
 
 			</h:form>
 
 		</div>
 		
 	</div>
-
+</p:panel>
 </h:body>
 </html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
 
 <h:head>
@@ -13,12 +14,7 @@
 </h:head>
 
 <h:body>
-
-	<div id="wrapper">
-		<div id="header">
-			<h2>Lista de vehiculos</h2>
-		</div>
-	</div>
+<p:panel header="Lista de vehiculos">
 
 	<div id="container">
 
@@ -26,73 +22,74 @@
 		
 			<h:messages globalOnly="true" />
 		
-			<h:button value="Agregar vehiculo" styleClass="add-student-button" outcome="agregarvehiculo"/>			
+			<p:button value="Agregar vehiculo" styleClass="add-student-button" outcome="agregarvehiculo"/>			
 
 			<h:form>
 		<h:outputLabel>Buscar por placa del carro:</h:outputLabel> <h:inputText value="#{busqueda.palabra}" id="palabra" /> <h:message for="palabra" />
-			<h:outputLabel /> <h:commandButton value="Save" styleClass="save" action="#{vehiculoController.buscarVehiculo(busqueda.palabra)}"/>
+			<h:outputLabel /> <p:commandButton value="Save" styleClass="save" action="#{vehiculoController.buscarVehiculo(busqueda.palabra)}"/>
 						
-			<h:dataTable value="#{vehiculoController.vehiculoBeansb}" var="tempVehiculo"
+			<p:dataTable value="#{vehiculoController.vehiculoBeansb}" var="tempVehiculo"
 				styleClass="demo-table" 
 				headerClass="demo-table-header"
 				rowClasses="demo-table-odd-row,demo-table-even-row">
 
-				<h:column>
+				<p:column>
 					<!-- the column header -->
 					<f:facet name="header">id</f:facet>
 
 					<!--  the value for each row -->
-					#{tempVehiculo.numeroidentificacionelconductor}				</h:column>
+					#{tempVehiculo.numeroidentificacionelconductor}				
+				</p:column>
 
-				<h:column>
+				<p:column>
 					<!-- the column header -->
 					<f:facet name="header">Nombre del conductor</f:facet>
 
 					<!--  the value for each row -->
 					#{tempVehiculo.nombredelconductor}
-				</h:column>
+				</p:column>
 
-				<h:column>
+				<p:column>
 					<!-- the column header -->
 					<f:facet name="header">Marca</f:facet>
 
 					<!--  the value for each row -->
 					#{tempVehiculo.marca}
-				</h:column>
+				</p:column>
 				
-				<h:column>
+				<p:column>
 					<!-- the column header -->
 					<f:facet name="header">Modelo</f:facet>
 
 					<!--  the value for each row -->
 					#{tempVehiculo.modelo}
-				</h:column>
+				</p:column>
 				
-				<h:column>
+				<p:column>
 					<!-- the column header -->
 					<f:facet name="header">Id proveedor</f:facet>
 
 					<!--  the value for each row -->
 					#{tempVehiculo.idProveedor}
-				</h:column>
+				</p:column>
 				
-				<h:column>
+				<p:column>
 					<!-- the column header -->
 					<f:facet name="header">Estado</f:facet>
 
 					<!--  the value for each row -->
 					#{tempVehiculo.estado}
-				</h:column>
+				</p:column>
 				
-				<h:column>
+				<p:column>
 					<!-- the column header -->
 					<f:facet name="header">Placa del vehiculo</f:facet>
 
 					<!--  the value for each row -->
 					#{tempVehiculo.placadelvehiculo}
-				</h:column>
+				</p:column>
 
-				<h:column>
+				<p:column>
 					<!-- the column header -->
 					<f:facet name="header">Action</f:facet>
 
@@ -104,15 +101,15 @@
 					<h:commandLink value="Eliminar"
 						onclick="if (!confirm('Quiere eliminar este proveedor?')) return false"
 						action="#{vehiculoController.deleteVehiculo(tempVehiculo.numeroidentificacionelconductor)}"/>
-				</h:column>
+				</p:column>
 
-			</h:dataTable>
+			</p:dataTable>
 
 			</h:form>
 
 		</div>
 		
 	</div>
-
+</p:panel>
 </h:body>
 </html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,10 +15,9 @@
 </h:head>
 
 <h:body>
-
+<p:panel header="Actualizar datos del vehiculo">
 	
 	<div id="container">
-		<h3>Actualizar datos del vehiculo</h3>
 
 		<h:messages globalOnly="true" />
 
@@ -40,7 +40,7 @@
 			
 							 <h:inputHidden value="#{vehiculoBean.numeroidentificacionelconductor}" />
 				
-				 <h:commandButton value="Actualizar" styleClass="save" 
+				 <p:commandButton value="Actualizar" styleClass="save" 
 				 			action="#{vehiculoController.updateVehiculo(vehiculoBean)}"/>
 			
 			</h:panelGrid>
@@ -51,5 +51,6 @@
 		<p><h:outputLink value="listaVehiculos.xhtml">Volver a la lista</h:outputLink></p>
 
 	</div>	
+</p:panel>
 </h:body>
 </html>

@@ -2,7 +2,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,9 +15,9 @@
 </h:head>
 
 <h:body>
-	
+<p:panel header="Agregar proveedor">
 	<div id="container">
-		<h3>Agregar proveedor</h3>
+		
 
 		<h:messages globalOnly="true" />
 
@@ -33,7 +34,7 @@
             							
             	<h:outputLabel>Cantidad de vehiculos:</h:outputLabel> <h:inputText value="#{proveedorBean.cantidadvehiculos}" id="cantidadvehiculos" /> <h:message for="cantidadvehiculos" />
 				
-				<h:outputLabel /> <h:commandButton value="Guardar" styleClass="save" action="#{proveedorController.agregarProveedor(proveedorBean)}"/>
+				<h:outputLabel /> <p:commandButton value="Guardar" styleClass="save" action="#{proveedorController.agregarProveedor(proveedorBean)}"/>
 			
 			</h:panelGrid>
 		</h:form>
@@ -43,5 +44,6 @@
 		<p><h:outputLink value="listaProveedores.xhtml">Vuelva a la lista</h:outputLink></p>
 
 	</div>	
+</p:panel>
 </h:body>
 </html>
